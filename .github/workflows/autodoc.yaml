@@ -21,6 +21,7 @@ jobs:
         uses: tj-actions/verify-changed-files@v8.6
         id: verify-changed-files
         with:
+          action: "action.yaml"
           files: |
             README.md
 
@@ -33,4 +34,3 @@ jobs:
           branch: "chore/auto-doc-update-readme"
           commit-message: "auto-doc: Updated README.md"
           body: "auto-doc: Updated README.md"
-          action: "action.yaml"
