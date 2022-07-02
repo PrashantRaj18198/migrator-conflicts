@@ -1,0 +1,35 @@
+name: migrator-conflicts
+author: PrashantRaj18198
+description: |
+  Check if migrations in your branch aren't conflicting with the base branch when you
+  raise a pull request.
+inputs:
+  base_branch:
+    description: Base branch to compare current migrations against
+    required: true
+  current_branch:
+    description: Current branch to compare against the base branch
+    required: true
+  mention_author:
+    description: Tag the author in comment if 'mention_author' is marked 'true'
+    required: false
+    default: "false"
+  migration_delimiter:
+    description: |
+      Delimiter to use for the files to get the migration version.
+      If your migrations files are named with '_' delimiter,
+      for example 'migrations/20220702213559_initial_migration.sql' here the delimiter is
+      '_'. Delimiter is used to fetch the migration version for a file. In the above
+      example the migration version is 20220702213559.
+    required: false
+    default: _
+  migration_directories:
+    description: |
+      List of migration directories to compare for conflicts. Each directory in
+      'current_branch' is compared against the 'base_branch' for migration conflicts.
+      For example, if migration_directories = ['users/migrations', 'orders/migrations'],
+      'users/migrations' of current_branch is compared against 'users/migrations' of base_branch.
+    required: true
+runs:
+  using: node16
+  main: lib/index.js
