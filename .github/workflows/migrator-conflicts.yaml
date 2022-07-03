@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Run migrator-conflicts
-        uses: PrashantRaj1898/migrator-conflicts@master
+        uses: PrashantRaj18198/migrator-conflicts@master
         with:
           migration_directories: |
             example/users/migrations
