@@ -1,6 +1,16 @@
 # migrator-conflicts
 
-Check if the migrations in your branch has conflicts with the base branch
+Check if the migrations in your branch has conflicts with the base branch. 
+
+Are you running into issues because of your migration versions are behind the latest migrations when you merge? Depending on what you use for managing your migrations. During the deploy phase it will throw an error like
+```console
+# below is migration error when goose is being used
+# https://github.com/pressly/goose
+migrations/main.go: error: Missing migration version 20220702213559_*
+```
+To get rid of issues like this you need to make sure your migration versions are ahead of the version in the base branch when your raise a PR and change your migration versions (usually timestamps) to a later one to rectify. This action checks all of your migrations in your branch against the base branch when you raise a pr and notifies you by commenting on your PR. This makes sure you never accidently merge PR with conflicting versions.
+
+For viewing the comments on different cases look at PRs with label **test** on this repo.
 
 ## Inputs
 
