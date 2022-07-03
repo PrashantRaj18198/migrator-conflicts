@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Run migrator-conflicts
-        uses: PrashantRaj18198/migrator-conflicts@v0
+        uses: PrashantRaj18198/migrator-conflicts@v1
         with:
           github_token: ${{ github.token }} # must have permission to comment on PRs
           # Read more about github token permissions on this blog: https://github.blog/changelog/2021-04-20-github-actions-control-permissions-for-github_token/
