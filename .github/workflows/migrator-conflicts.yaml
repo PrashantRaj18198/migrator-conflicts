@@ -19,6 +19,7 @@ jobs:
       - name: Run migrator-conflicts
         uses: PrashantRaj18198/migrator-conflicts@master
         with:
+          github_token: ${{ github.token }}
           migration_directories: |
             example/users/migrations
           mention_author: true
