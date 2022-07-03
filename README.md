@@ -12,7 +12,7 @@ migrations/main.go: error: Missing migration version 20220702213559_*
 
 To get rid of issues like this you need to make sure your migration versions are ahead of the version in the base branch when your raise a PR and change your migration versions (usually timestamps) to a later one to rectify. This action checks all of your migrations in your branch against the base branch when you raise a pr and notifies you by commenting on your PR. This makes sure you never accidently merge PR with conflicting versions.
 
-For viewing the comments on different cases look at PRs with label **test** on this repo.
+For viewing the comments on different cases [look at PRs with label **test** on this repo](https://github.com/PrashantRaj18198/migrator-conflict/pulls?q=is%3Apr+is%3Aopen+label%3Atest).
 
 ## Usage
 
