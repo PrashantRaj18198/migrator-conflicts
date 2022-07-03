@@ -4,12 +4,15 @@ description: |
   Check if migrations in your branch aren't conflicting with the base branch when you
   raise a pull request.
 inputs:
+  github_token:
+    description: Github token, required to comment on pull requests
+    required: false
   base_branch:
     description: Base branch to compare current migrations against
-    required: true
+    required: false
   current_branch:
     description: Current branch to compare against the base branch
-    required: true
+    required: false
   mention_author:
     description: Tag the author in comment if 'mention_author' is marked 'true'
     required: false

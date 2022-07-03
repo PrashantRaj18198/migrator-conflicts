@@ -17,26 +17,27 @@ type Opts = {
  * Main function which is invoked
  */
 async function main() {
-  const githubToken = core.getInput('GITHUB_TOKEN');
+  const githubToken =
+    process.env.INPUT_GITHUB_TOKEN || process.env.GITHUB_TOKEN;
   const octokit = github.getOctokit(githubToken);
   const {data: pr} = await octokit.rest.pulls.get({
     pull_number: github.context.payload.pull_request?.number || 0,
     owner: github.context.repo.owner,
     repo: github.context.repo.repo,
   });
-  const migrationDirectories = process.env.MT_MIGRATIONS_DIRECTORIES?.split(
+  const migrationDirectories = process.env.INPUT_MIGRATIONS_DIRECTORIES?.split(
       '\n',
   ).forEach((val) => val.trim());
 
   const opts: Opts = {
     githubToken: githubToken,
-    baseBranch: pr.base.ref || process.env.MT_BASE_BRANCH,
-    currBranch: pr.head.ref || process.env.MT_CURRENT_BRANCH,
+    baseBranch: pr.base.ref || process.env.INPUT_BASE_BRANCH,
+    currBranch: pr.head.ref || process.env.INPUT_CURRENT_BRANCH,
     migrationDirectories:
       core.getMultilineInput('migration_directories') || migrationDirectories,
     migrationDelimiter:
       core.getInput('migration_delimiter') ||
-      process.env.MT_MIGRATION_FILENAME_DELIMITER ||
+      process.env.INPUT_MIGRATION_FILENAME_DELIMITER ||
       MIGRATION_FILENAME_DELIMITER,
     mentionAuthor: core.getBooleanInput('mention_author'),
   };
