@@ -77,7 +77,7 @@ Update using 'MT_MIGRATION_FILENAME_DELIMITER' environment variable`,
             `Version found to be same
 for ${largest.filename} and ${migrationsList[index].filename}.
 This should not be the case as version is used as version by migrator.
-Please update`.replace('/\n/g', ' '),
+Please update`.replace(/\n/g, ' '),
         );
       }
     }
@@ -126,7 +126,7 @@ has latest migration with (version: ${baseLatestMigration.ts}
 file: ${baseLatestMigration.filename}). Current branch "${this.opts.currBranch}"
 is behind with migration version (version: ${currLatestMigration.ts} 
 file: ${currLatestMigration.filename}).
-Please update the version to a later point`.replace('/\n/g', ' '),
+Please update the version to a later point`.replace(/\n/g, ' '),
       );
     }
   }
