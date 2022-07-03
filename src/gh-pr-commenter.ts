@@ -48,7 +48,11 @@ export class GitHubPRCommenter {
         page: page,
         per_page: 100,
       });
-      if (response.status >= 200 && response.status < 300) {
+      if (
+        response.status >= 200 &&
+        response.status < 300 &&
+        response.data.length > 0
+      ) {
         for (let index = 0; index < response.data.length; index++) {
           if (response.data[index].body == this.opts.message) {
             console.log(
