@@ -53,6 +53,7 @@ async function main() {
     try {
       mtInstance.validate();
     } catch (error) {
+      console.log('typeof error', typeof error);
       if (typeof error === 'string') {
         errorMessages.push(error);
       }
