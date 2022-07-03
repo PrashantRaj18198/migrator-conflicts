@@ -12,7 +12,7 @@ migrations/main.go: error: Missing migration version 20220702213559_*
 
 To get rid of issues like this you need to make sure your migration versions are ahead of the version in the base branch when your raise a PR and change your migration versions (usually timestamps) to a later one to rectify. This action checks all of your migrations in your branch against the base branch when you raise a pr and notifies you by commenting on your PR. This makes sure you never accidently merge PR with conflicting versions.
 
-For viewing the comments on different cases look at PRs with label **test** on this repo.
+For viewing the comments on different cases [look at PRs with label **test** on this repo](https://github.com/PrashantRaj18198/migrator-conflict/pulls?q=is%3Apr+is%3Aopen+label%3Atest).
 
 ## Usage
 
@@ -51,8 +51,8 @@ jobs:
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-| INPUT                 | TYPE   | REQUIRED | DEFAULT   | DESCRIPTION                                                                                                                                                                                                                                                                                                                                                        |
-| --------------------- | ------ | -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|         INPUT         |  TYPE  | REQUIRED |  DEFAULT  |                                                                                                                                                                            DESCRIPTION                                                                                                                                                                             |
+|-----------------------|--------|----------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | base_branch           | string | false    |           | Base branch to compare current<br>migrations against                                                                                                                                                                                                                                                                                                               |
 | current_branch        | string | false    |           | Current branch to compare against<br>the base branch                                                                                                                                                                                                                                                                                                               |
 | github_token          | string | true     |           | Github token, required to comment<br>on pull requests                                                                                                                                                                                                                                                                                                              |
