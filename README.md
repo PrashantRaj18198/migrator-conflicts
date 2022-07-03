@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Run migrator-conflicts
-        uses: PrashantRaj18198/migrator-conflicts@master
+        uses: PrashantRaj18198/migrator-conflicts@v0
         with:
           github_token: ${{ github.token }} # must have permission to comment on PRs
           # Read more about github token permissions on this blog: https://github.blog/changelog/2021-04-20-github-actions-control-permissions-for-github_token/
@@ -51,8 +51,8 @@ jobs:
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|         INPUT         |  TYPE  | REQUIRED |  DEFAULT  |                                                                                                                                                                            DESCRIPTION                                                                                                                                                                             |
-|-----------------------|--------|----------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| INPUT                 | TYPE   | REQUIRED | DEFAULT   | DESCRIPTION                                                                                                                                                                                                                                                                                                                                                        |
+| --------------------- | ------ | -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | base_branch           | string | false    |           | Base branch to compare current<br>migrations against                                                                                                                                                                                                                                                                                                               |
 | current_branch        | string | false    |           | Current branch to compare against<br>the base branch                                                                                                                                                                                                                                                                                                               |
 | github_token          | string | true     |           | Github token, required to comment<br>on pull requests                                                                                                                                                                                                                                                                                                              |
