@@ -40,11 +40,11 @@ export class MigratorTester {
     const splittedMigrationName = filename.split(this.opts.migrationsDelimiter);
     if (splittedMigrationName.length == 0) {
       console.warn(
-          `Length found to be 0 when migration
-        split using ${this.opts.migrationsDelimiter}
-         for ${this.opts.migrationsDir}/${filename}.
-        Perhaps the migration delimiter is wrong.
-        Update using 'MT_MIGRATION_FILENAME_DELIMITER' environment variable`,
+          `
+Length found to be 0 when migration split using ${this.opts.migrationsDelimiter}
+for ${this.opts.migrationsDir}/${filename}.
+Perhaps the migration delimiter is wrong.
+Update using 'MT_MIGRATION_FILENAME_DELIMITER' environment variable`,
       );
       return;
     }
@@ -74,10 +74,10 @@ export class MigratorTester {
       }
       if (compareVal == 0) {
         throw new Error(
-            `Timestamp found to be same
-          for ${largest.filename} and ${migrationsList[index].filename}.
-        This should not be the case as timestamp is used as version by migrator.
-        Please update`,
+            `Version found to be same
+for ${largest.filename} and ${migrationsList[index].filename}.
+This should not be the case as version is used as version by migrator.
+Please update`.replace('\n', ' '),
         );
       }
     }
@@ -121,10 +121,12 @@ export class MigratorTester {
 
     if (compareVal > -1) {
       throw new Error(
-          `Base branch "${this.opts.baseBranch}" has migrations,
-           with later or same timestamp as the current branch
-            "${this.opts.currBranch}".
-        Please update the timestamps to a later point`,
+          `Base branch "${this.opts.baseBranch}" 
+has latest migration with (version: ${baseLatestMigration.ts} 
+file: ${baseLatestMigration.filename}). Current branch "${this.opts.currBranch}"
+is behind with migration version (version: ${currLatestMigration.ts} 
+file: ${currLatestMigration.filename}).
+Please update the version to a later point`.replace('\n', ' '),
       );
     }
   }

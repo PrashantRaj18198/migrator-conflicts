@@ -26,7 +26,7 @@ export class GitHubPRCommenter {
     this.opts = opts;
     this.octokit = github.getOctokit(this.opts.githubToken);
     if (this.opts.mentionAuthor) {
-      this.opts.message += `\n${opts.authorUsername}\n`;
+      this.opts.message += `\n@${opts.authorUsername}\n`;
     }
   }
 
@@ -56,8 +56,8 @@ export class GitHubPRCommenter {
         for (let index = 0; index < response.data.length; index++) {
           if (response.data[index].body == this.opts.message) {
             console.log(
-                `Comment already made by action. Skipping re-commenting.
-              Please delete the old comment made to re-comment.`,
+                'Comment already made by action. Skipping re-commenting',
+                'Please delete the old comment made to re-comment.',
             );
             shouldComment = false;
             break;
