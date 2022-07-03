@@ -6,7 +6,7 @@ description: |
 inputs:
   github_token:
     description: Github token, required to comment on pull requests
-    required: false
+    required: true
   base_branch:
     description: Base branch to compare current migrations against
     required: false
