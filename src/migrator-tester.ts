@@ -1,6 +1,5 @@
 import {readdirSync} from 'fs';
 import {execSync} from 'child_process';
-import {error} from 'console';
 
 type MigrationFile = {
   ts: string;
@@ -74,7 +73,7 @@ export class MigratorTester {
         largest = migrationsList[index];
       }
       if (compareVal == 0) {
-        throw error(
+        throw new Error(
             `Timestamp found to be same
           for ${largest.filename} and ${migrationsList[index].filename}.
         This should not be the case as timestamp is used as version by migrator.
@@ -121,7 +120,7 @@ export class MigratorTester {
     );
 
     if (compareVal > -1) {
-      throw error(
+      throw new Error(
           `Base branch "${this.opts.baseBranch}" has migrations,
            with later or same timestamp as the current branch
             "${this.opts.currBranch}".
